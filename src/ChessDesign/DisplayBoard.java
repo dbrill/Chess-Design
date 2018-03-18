@@ -1,11 +1,16 @@
-package TestPackage;
+/**
+ * 
+ */
+package ChessDesign;
 
-public class DisplayTest {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+/**
+ * @author Abhijit
+ *
+ */
+public class DisplayBoard {
+	
+	DisplayBoard(){
 		
-		//displayBoard();
 	}
 	
 	public static void displayBoard() {
