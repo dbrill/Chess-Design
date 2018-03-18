@@ -1,0 +1,11 @@
+package ChessDesign;
+
+/**
+ * @author Abhijit on 3/17/2018
+ *
+ */
+public enum Color {
+
+	WHITE,
+	BLACK
+}
