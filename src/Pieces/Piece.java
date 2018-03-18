@@ -12,6 +12,8 @@ public abstract class Piece {
 	int x;
 	int y;
 	
+	public String displayText;		//For display purpose only
+	
 	/***
 	 * 
 	 * @param type		Type of Piece (of Type enum)
@@ -25,6 +27,12 @@ public abstract class Piece {
 		this.player = player;
 		this.x = x;
 		this.y = y;
+		
+		if(player.color == Color.WHITE)
+			displayText = "W.";
+		else
+			displayText = "B.";
+			
 		
 		Board.getInstance().board[x][y] = this;	
 	}

@@ -8,7 +8,7 @@ import Pieces.*;
 
 public class Player {
 	
-	Color color;
+	public Color color;
 	
 	Pawn[] pawns;
 	Queen queen;
@@ -30,7 +30,7 @@ public class Player {
 		if(color == Color.WHITE)
 			initialX = 6;
 		else
-			initialX = 0;
+			initialX = 1;
 	}
 	
 	/**
@@ -41,8 +41,13 @@ public class Player {
 		//Creating Pawns
 		pawns = new Pawn[8];
 		for(int i=0; i<8; i++) {
-			pawns[i] = new Pawn(this, initialX + 1, i);
+			pawns[i] = new Pawn(this, initialX, i);
 		}
+		
+		if(color == Color.WHITE)
+			initialX += 1;
+		else
+			initialX -= 1;
 		
 		rook = new Rook[2];
 		rook[0] = new Rook(this, initialX, 0);

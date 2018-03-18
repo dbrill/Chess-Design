@@ -2,7 +2,6 @@
  * 
  */
 package Pieces;
-
 import ChessDesign.Player;
 
 /**
@@ -20,6 +19,7 @@ public class Bishop extends Piece{
 	public Bishop(Player player, int x, int y) {
 		super(Type.BISHOP, player, x, y);
 		
+		this.displayText += "B";
 	}
 
 	@Override

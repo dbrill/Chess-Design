@@ -17,6 +17,7 @@ public class King extends Piece{
 	public King(Player player, int x, int y) {
 		super(Type.QUEEN, player, x, y);
 		
+		this.displayText += "K";
 	}
 
 	@Override

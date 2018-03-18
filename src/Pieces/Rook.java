@@ -20,6 +20,7 @@ public class Rook extends Piece{
 	public Rook(Player player, int x, int y) {
 		super(Type.ROOK, player, x, y);
 		
+		this.displayText += "R";
 	}
 
 	@Override

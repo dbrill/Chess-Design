@@ -17,6 +17,7 @@ public class Pawn extends Piece{
 	public Pawn(Player player, int x, int y) {
 		super(Type.PAWN, player, x, y);
 		
+		this.displayText += "P";
 	}
 
 	@Override

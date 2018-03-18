@@ -31,6 +31,8 @@ public class DisplayBoard {
 	 */
 	public static void displayGraphicBoard() {
 		
+		Piece[][] tempBoard = Board.getInstance().board;
+		
 		System.out.print("  ");
 		
 		for(int j=0; j<8; j++) {
@@ -52,7 +54,13 @@ public class DisplayBoard {
 			
 			//TODO: Insert chess piece here, in this below loop
 			for(int y=0; y<8; y++) {
-				System.out.print("     |");
+				//System.out.print("     |");
+				
+				if(tempBoard[i][y] != null) {
+					System.out.print(" "+tempBoard[i][y].displayText+ " |");
+				}
+				else
+					System.out.print("     |");
 				//System.out.print(" W.Q |");
 			}
 			

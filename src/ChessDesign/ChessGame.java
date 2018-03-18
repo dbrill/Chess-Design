@@ -19,7 +19,7 @@ public class ChessGame {
 		Player black = new Player(Color.BLACK);
 		black.initilizePieces();
 		
-		DisplayBoard.displayBoard();
+		DisplayBoard.displayGraphicBoard();
 	}
 
 }

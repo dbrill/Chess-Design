@@ -17,6 +17,7 @@ public class Knight extends Piece{
 	public Knight(Player player, int x, int y) {
 		super(Type.KNIGHT, player, x, y);
 		
+		this.displayText += "H";
 	}
 
 	@Override
