@@ -1,7 +1,7 @@
 package Pieces;
 
 /**
- * @author Abhijit on 3/17/2018
+ * @author Abhijit
  *
  */
 public enum Type {

@@ -1,10 +1,8 @@
-/**
- * 
- */
 package ChessDesign;
+import Pieces.Piece;
 
 /**
- * @author Abhijit on 3/17/2018
+ * @author Abhijit
  *
  */
 public class DisplayBoard {
@@ -13,7 +11,25 @@ public class DisplayBoard {
 		
 	}
 	
+	/**
+	 * Displaying the Board 2D matrix. (For test purpose)
+	 */
 	public static void displayBoard() {
+		
+		Piece[][] tempBoard = Board.getInstance().board;
+		
+		for(int i=0; i < 8; i++) {
+			for(int j=0; j < 8; j++) {
+				System.out.print(tempBoard[i][j] + "  ");
+			}
+			System.out.println();
+		}
+	}
+	
+	/**
+	 * Displays the Graphic Chess board with pieces
+	 */
+	public static void displayGraphicBoard() {
 		
 		System.out.print("  ");
 		
@@ -22,7 +38,7 @@ public class DisplayBoard {
 		}
 		System.out.println();
 		
-		for(int i=7; i>= 0; i--) {
+		for(int i=0; i < 8; i++) {
 			
 			System.out.print("  |");
 			

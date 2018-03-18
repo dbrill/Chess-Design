@@ -2,7 +2,7 @@ package Pieces;
 import ChessDesign.*;
 
 /**
- * @author Abhijit on 3/17/2018
+ * @author Abhijit
  *
  */
 public abstract class Piece {
@@ -26,6 +26,7 @@ public abstract class Piece {
 		this.x = x;
 		this.y = y;
 		
+		Board.getInstance().board[x][y] = this;	
 	}
 	
 	/***

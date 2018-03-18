@@ -1,12 +1,15 @@
+/**
+ * 
+ */
 package Pieces;
 
 import ChessDesign.Player;
 
 /**
- * @author Abhijit on 3/17/2018
+ * @author Abhijit
  *
  */
-public class Pawn extends Piece{
+public class Bishop extends Piece{
 
 	/***
 	 * Refer constructor of Piece
@@ -14,8 +17,8 @@ public class Pawn extends Piece{
 	 * @param x
 	 * @param y
 	 */
-	public Pawn(Player player, int x, int y) {
-		super(Type.PAWN, player, x, y);
+	public Bishop(Player player, int x, int y) {
+		super(Type.BISHOP, player, x, y);
 		
 	}
 
