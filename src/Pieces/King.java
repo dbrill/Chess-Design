@@ -21,9 +21,10 @@ public class King extends Piece{
 	}
 
 	@Override
-	public void movement_type(int fx, int fy) {
+	public boolean movement_type(int fx, int fy) {
 		// TODO Auto-generated method stub
 		
+		return true;
 	}
 
 }

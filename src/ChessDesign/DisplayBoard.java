@@ -102,8 +102,8 @@ public class DisplayBoard {
 		System.out.println("To make a move, Follow the syntax and type the move");
 		
 		System.out.println("Syntax: <PieceName> <Alphabet><Number> to <Alphabet><Number>");
-		System.out.println("If its White player's turn, \nExample: Type P C3 to C5");
-		System.out.println("~ This will White's Pawn from C3 to C5 (If its not a valid move, the Master given another turn)");
+		System.out.println("Example:White Player's turn: P C7 to C5");
+		System.out.println("~ This will White's Pawn from C7 to C5 (If its not a valid move, the Master given another turn)");
 		
 		System.out.println("\n");
 	}

@@ -37,6 +37,14 @@ public abstract class Piece {
 		Board.getInstance().board[x][y] = this;	
 	}
 	
+	/**
+	 * Returns the Player associated to this piece
+	 * @return Player object
+	 */
+	public Player getPlayer() {
+		return player;
+	}
+	
 	/***
 	 * 
 	 * @param final_x	Next move's X position
@@ -46,12 +54,34 @@ public abstract class Piece {
 	//TODO:Implement this method in the Piece class
 	public boolean movement(int final_x, int final_y) {
 		
+		if(player != Board.getInstance().currentTurn)
+			return false;	//Cannot access the other player's piece
 		
+		if(movement_type(final_x, final_y)) {
+			
+			
+			updateBoard(final_x, final_y);
+			
+			return true;
+		}
 		
 		return false;
-		
 	}
 	
-	//TODO: Implement this method in all piece children class
-	public abstract void movement_type(int fx, int fy);
+	/**
+	 * Once the piece is confirmed to move from x,y to fx,fy; This function updates the board
+	 * @param fx Final X position
+	 * @param fy Final Y position
+	 */
+	public void updateBoard(int fx, int fy) {
+		
+		Board.getInstance().board[fx][fy] = this;
+		Board.getInstance().board[x][y] = null;
+		
+		this.x = fx;
+		this.y = fy;
+	}
+	
+	//TODO: Implement this method in all piece children class + Delete piece if present in fx,fy
+	public abstract boolean movement_type(int fx, int fy);
 }
