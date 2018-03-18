@@ -13,6 +13,11 @@ public class Board {
 	private static Board boardObj;
 	public Piece[][] board;
 	
+	private Player white;
+	private Player black;
+	
+	public Player currentTurn;
+	
 	public Board() {
 		
 	}
@@ -42,6 +47,65 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Create players White and Black
+	 */
+	public void createPlayers() {
+		
+		white = new Player(Color.WHITE);
+		white.initilizePieces();
+		currentTurn = white;
+		
+		black = new Player(Color.BLACK);
+		black.initilizePieces();
+	}
 	
+	/**
+	 * Changing the turn after each move
+	 */
+	public void changeTurn() {
+		
+		if(currentTurn == white) {
+			
+			currentTurn = black;
+		}
+		else if(currentTurn == black){
+			
+			currentTurn = white;
+		}
+	}
+	
+	/**
+	 * Method to check if White has a check on Black
+	 * @return True if its a check, else false
+	 */
+	public boolean whiteCheck() {
+		return false;
+	}
+	
+	/**
+	 * Method to check if Black has a check on White
+	 * @return True if its a check, else false
+	 */
+	public boolean blackCheck() {
+		return false;
+	}
+	
+	/**
+	 * Method to check if White has a Checkmate on Black
+	 * @return True if its a Checkmate, else false
+	 */
+	public boolean whiteCheckmate() {
+		return false;
+	}
+	
+	/**
+	 * Method to check if Black has a Checkmate on White
+	 * @return True if its a Checkmate, else false
+	 */
+	public boolean blackCheckmate() {
+		return false;
+	}
+		
 
 }

@@ -83,6 +83,29 @@ public class DisplayBoard {
 			System.out.print("  "+a+"   ");
 			a++;
 		}
+		System.out.println("\n");
+	}
+	
+	public static void displayInstructions() {
+		System.out.println("\n ------- INSTRUCTIONS ------- \n");
+		System.out.println("Each player is either White (W) or Black(B)\n");
+		
+		System.out.println("Here is the following index for chess pieces");
+		System.out.println("    Pawn -> P");
+		System.out.println("    Rook -> R");
+		System.out.println("    Knight -> H");
+		System.out.println("    Bishop -> B");
+		System.out.println("    Queen -> Q");
+		System.out.println("    King -> K\n");
+		
+		System.out.println("Wait for the chess master to mention the Player's turn");
+		System.out.println("To make a move, Follow the syntax and type the move");
+		
+		System.out.println("Syntax: <PieceName> <Alphabet><Number> to <Alphabet><Number>");
+		System.out.println("If its White player's turn, \nExample: Type P C3 to C5");
+		System.out.println("~ This will White's Pawn from C3 to C5 (If its not a valid move, the Master given another turn)");
+		
+		System.out.println("\n");
 	}
 
 }
