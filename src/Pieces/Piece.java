@@ -54,14 +54,32 @@ public abstract class Piece {
 	//TODO:Implement this method in the Piece class
 	public boolean movement(int final_x, int final_y) {
 		
-		if(player != Board.getInstance().currentTurn)
-			return false;	//Cannot access the other player's piece
+		if((final_x < 0)
+				|| (final_y < 0)
+				|| (final_x > 7)
+				|| (final_y > 7)){
+			System.out.println("Move is outside the board!");
+			return false;
+		}
+
+		if(this.x == final_x && this.y == final_y){
+		    System.out.println("You've gotta move somewhere!");
+		    return false;
+        }
+
+		if(player != Board.getInstance().currentTurn) {
+            System.out.println("You can't move someone else's piece!");
+            return false;    //Cannot access the other player's piece
+        }
+
+		if((Board.getInstance().board[final_x][final_y] != null)
+                && (Board.getInstance().board[final_x][final_y].player == Board.getInstance().currentTurn)) {
+			System.out.println("You can't move over your own piece!");
+			return false;
+		}
 		
 		if(movement_type(final_x, final_y)) {
-			
-			
 			updateBoard(final_x, final_y);
-			
 			return true;
 		}
 		

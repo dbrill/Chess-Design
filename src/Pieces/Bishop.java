@@ -2,6 +2,7 @@
  * 
  */
 package Pieces;
+import ChessDesign.Board;
 import ChessDesign.Player;
 
 /**
@@ -22,10 +23,35 @@ public class Bishop extends Piece{
 		this.displayText += "B";
 	}
 
+	public Boolean isPathClear(int fx, int fy){
+		int incx = 1;
+		int incy = 1;
+		if(fx < this.x)
+			incx = -1;
+		if(fy < this.y)
+			incy = -1;
+
+		for(int i = 1; i != Math.abs(this.x - fx); i++){
+			if(Board.getInstance().board[this.x + (i * incx)][this.y + (i * incy)] != null){
+				System.out.println("There's a piece in your way!");
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	@Override
 	public boolean movement_type(int fx, int fy) {
 		// TODO Auto-generated method stub
-		
+		if(Math.abs(this.x - fx) != Math.abs(this.y - fy)){
+			System.out.println("Bishop must move diagonally!");
+			return false;
+		}
+
+		if(!isPathClear(fx, fy))
+			return false;
+
 		return true;
 	}
 

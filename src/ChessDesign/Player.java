@@ -36,7 +36,7 @@ public class Player {
 	/**
 	 * Initializing the Pieces for each Player
 	 */
-	public void initilizePieces() {
+	public void initializePieces() {
 		
 		//Creating Pawns
 		pawns = new Pawn[8];

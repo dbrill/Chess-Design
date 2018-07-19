@@ -53,11 +53,11 @@ public class Board {
 	public void createPlayers() {
 		
 		white = new Player(Color.WHITE);
-		white.initilizePieces();
+		white.initializePieces();
 		currentTurn = white;
 		
 		black = new Player(Color.BLACK);
-		black.initilizePieces();
+		black.initializePieces();
 	}
 	
 	/**
