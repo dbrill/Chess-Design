@@ -2,7 +2,7 @@ package ChessDesign;
 import Pieces.*;
 
 /**
- * @author Abhijit
+ * @author Abhijit  @modifier Dbrill
  *
  */
 
@@ -11,6 +11,8 @@ import Pieces.*;
 public class Board {
 	
 	private static Board boardObj;
+	// This is a good example of polymorphism. The 2D array type is generically "Piece" so that we
+	// can store all kinds of pieces in the board object.
 	public Piece[][] board;
 	
 	private Player white;

@@ -18,44 +18,14 @@ public class ChessGame {
 		//DisplayBoard.displayBoard();
 		
 		Scanner sc = new Scanner(System.in);
-
-		//* GUI STUFF *//
-//		JButton tz = new JButton("woopity doo!");
-//		JButton gz = new JButton("Anotha one");
-//		tz.setPreferredSize(new java.awt.Dimension(100, 100));
-//		gz.setPreferredSize(new java.awt.Dimension(100, 100));
-//		tz.setLocation(0, 0);
-//		gz.setLocation(600, 600);
-//
-//		JFrame window = new JFrame("swing test");
-//		window.setBackground(java.awt.Color.BLUE);
-//		window.setSize(new java.awt.Dimension(600, 600));
-//		window.setResizable(false);
-//		window.setLocale(null);
-//		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		window.add(tz);
-//
-//		JFrame windowt = new JFrame("swing test");
-//		windowt.setBackground(java.awt.Color.BLUE);
-//		windowt.setSize(new java.awt.Dimension(600, 600));
-//		windowt.setResizable(false);
-//		windowt.setLocale(null);
-//		windowt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		windowt.add(gz);
-//
-//		windowt.pack();
-//		window.pack();
-//		window.setVisible(true);
-//		windowt.setVisible(true);
-
-//		tz.updateUI();
+		DisplayBoard displayBoard = new DisplayBoard();
 		
 		Board.getInstance().createBoard();
 		
 		Board.getInstance().createPlayers();
-		
-		DisplayBoard.displayInstructions();
-		DisplayBoard.displayGraphicBoard();
+
+		displayBoard.displayInstructions();
+		displayBoard.displayGraphicBoard();
 		
 		boolean whiteCheckmate = false;
 		boolean blackCheckmate = false;
@@ -84,7 +54,7 @@ public class ChessGame {
 			else {
 				
 				System.out.println("Status: Great Move");
-				DisplayBoard.displayGraphicBoard();
+				displayBoard.displayGraphicBoard();
 			}
 			
 			//See for Check mate

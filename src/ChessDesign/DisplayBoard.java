@@ -1,11 +1,15 @@
 package ChessDesign;
 import Pieces.Piece;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.event.*;
 
 /**
  * @author Abhijit
  *
  */
-public class DisplayBoard {
+public class DisplayBoard extends JFrame {
 	
 	DisplayBoard(){
 		
@@ -29,61 +33,81 @@ public class DisplayBoard {
 	/**
 	 * Displays the Graphic Chess board with pieces
 	 */
-	public static void displayGraphicBoard() {
+	public void displayGraphicBoard() {
 		
 		Piece[][] tempBoard = Board.getInstance().board;
-		
+		CButton[][] spaces = new CButton[8][8];
+
+		setSize(800,800);
+		setLocation(50,80);
+		setBackground(java.awt.Color.DARK_GRAY);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLayout(new GridLayout(8, 8));
 		System.out.print("  ");
-		
-		for(int j=0; j<8; j++) {
-			System.out.print("______");
-		}
-		System.out.println();
-		
-		for(int i=0; i < 8; i++) {
-			
-			System.out.print("  |");
-			
-			for(int x=0; x<8; x++) {
-				System.out.print("     |");
-			}
-			
-			System.out.println();
-			//Printing the vertical numbers 8-1
-			System.out.print(i+1 + " |");
-			
-			//TODO: Insert chess piece here, in this below loop
-			for(int y=0; y<8; y++) {
-				//System.out.print("     |");
-				
-				if(tempBoard[i][y] != null) {
-					System.out.print(" "+tempBoard[i][y].displayText+ " |");
+
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				if(tempBoard[i][j] != null){
+					spaces[i][j] = new CButton(tempBoard[i][j]);
 				}
-				else
-					System.out.print("     |");
-				//System.out.print(" W.Q |");
+				else{
+					spaces[i][j] = new CButton();
+				}
+				add(spaces[i][j]);
+				spaces[i][j].setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 			}
-			
-			System.out.println();
-			System.out.print("  |");
-			
-			for(int z=0; z < 8; z++) {
-				
-				System.out.print("_____|");
-			}
-			System.out.println();
-			
-			
 		}
-		
-		System.out.print("   ");
-		//printing the horizontal alphabets
-		char a = 'A';
-		for(int j=0; j<8; j++) {
-			System.out.print("  "+a+"   ");
-			a++;
-		}
-		System.out.println("\n");
+
+		setVisible(true);
+
+//
+//		for(int j=0; j<8; j++) {
+//			System.out.print("______");
+//		}
+//		System.out.println();
+//
+//		for(int i=0; i < 8; i++) {
+//
+//			System.out.print("  |");
+//
+//			for(int x=0; x<8; x++) {
+//				System.out.print("     |");
+//			}
+//
+//			System.out.println();
+//			//Printing the vertical numbers 8-1
+//			System.out.print(i+1 + " |");
+//
+//			//TODO: Insert chess piece here, in this below loop
+//			for(int y=0; y<8; y++) {
+//
+//				if(tempBoard[i][y] != null) {
+//					System.out.print(" "+tempBoard[i][y].displayText+ " |");
+//				}
+//				else
+//					System.out.print("     |");
+//			}
+//
+//			System.out.println();
+//			System.out.print("  |");
+//
+//			for(int z=0; z < 8; z++) {
+//
+//				System.out.print("_____|");
+//			}
+//			System.out.println();
+//
+//
+//		}
+//
+//		System.out.print("   ");
+//		//printing the horizontal alphabets
+//		char a = 'A';
+//		for(int j=0; j<8; j++) {
+//			System.out.print("  "+a+"   ");
+//			a++;
+//		}
+//		System.out.println("\n");
 	}
 	
 	public static void displayInstructions() {
