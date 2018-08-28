@@ -14,6 +14,8 @@ public class Board {
 	// This is a good example of polymorphism. The 2D array type is generically "Piece" so that we
 	// can store all kinds of pieces in the board object.
 	public Piece[][] board;
+
+	public int[][] move = new int[2][2];
 	
 	private Player white;
 	private Player black;
@@ -34,6 +36,26 @@ public class Board {
 			boardObj = new Board();
 		
 		return boardObj;
+	}
+
+	public Boolean makeMove(Piece piece, int fx, int fy) {
+		int oldx = piece.getX();
+		int oldy = piece.getY();
+		if(piece.movement(fx, fy)){
+			System.out.println("Moving: " + piece.displayText + " to " + fx + ", " + fy);
+			updateBoardView(piece, oldx, oldy);
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	public void updateBoardView(Piece piece, int x, int y){
+		BoardView.getInstance().spaces[x][y].piece = null;
+		BoardView.getInstance().spaces[x][y].setText("");
+		BoardView.getInstance().spaces[piece.getX()][piece.getY()].piece = piece;
+		BoardView.getInstance().spaces[piece.getX()][piece.getY()].setText(piece.displayText);
 	}
 	
 	/**
@@ -108,6 +130,14 @@ public class Board {
 	public boolean blackCheckmate() {
 		return false;
 	}
-		
+
+	public static void main(String[] args){
+		Board.getInstance().createBoard();
+
+		Board.getInstance().createPlayers();
+		BoardView boardView = new BoardView();
+
+		boardView.displayInstructions();
+	}
 
 }

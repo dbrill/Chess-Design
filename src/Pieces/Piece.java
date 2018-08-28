@@ -95,11 +95,20 @@ public abstract class Piece {
 		
 		Board.getInstance().board[fx][fy] = this;
 		Board.getInstance().board[x][y] = null;
+		Board.getInstance().changeTurn();
+
 		
 		this.x = fx;
 		this.y = fy;
 	}
-	
+
+	public int getX(){
+		return this.x;
+	}
+
+	public int getY(){
+		return this.y;
+	}
 	//TODO: Implement this method in all piece children class + Delete piece if present in fx,fy
 	public abstract boolean movement_type(int fx, int fy);
 }
