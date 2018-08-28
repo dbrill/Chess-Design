@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6834093-f1f8-4a4f-a1a7-7476ae35ad1b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ChessDesign/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChessDesign/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChessDesign/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChessDesign/CButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChessDesign/CButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChessDesign/ChessGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChessDesign/DisplayBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChessDesign/BoardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Piece.java" afterDir="false" />
-    </list>
+    <list default="true" id="d6834093-f1f8-4a4f-a1a7-7476ae35ad1b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -204,23 +194,6 @@
               <item name="Chess-Design" type="b2602c69:ProjectViewProjectNode" />
               <item name="Chess-Design" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Chess-Design" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Chess-Design" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Chess-Design" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Chess-Design" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ChessDesign" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Chess-Design" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Chess-Design" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Pieces" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -233,7 +206,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535492186842" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535492195943" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -341,16 +314,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1535398925422</updated>
-      <workItem from="1535398929419" duration="16462000" />
+      <workItem from="1535398929419" duration="16791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16462000" />
+    <option name="totallyTimeSpent" value="16791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
