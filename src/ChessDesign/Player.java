@@ -66,4 +66,14 @@ public class Player {
 				
 	}
 
+	/**
+	 * A helper function to return the space that the player's king currently occupies
+	 * This will be used in the check(mate) functions
+	 * @return an array of two ints [x, y]
+	 */
+	public int[] getKing(){
+		int[] kingSpace = new int[]{king.getX(), king.getY()};
+		return kingSpace;
+	}
+
 }
