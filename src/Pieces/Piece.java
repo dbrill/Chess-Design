@@ -53,11 +53,13 @@ public abstract class Piece {
 	 */
 	//TODO:Implement this method in the Piece class
 	public boolean movement(int final_x, int final_y) {
-		
-		if((final_x < 0)
-				|| (final_y < 0)
-				|| (final_x > 7)
-				|| (final_y > 7)){
+
+		if(player != Board.getInstance().currentTurn) {
+			System.out.println("You can't move someone else's piece!");
+			return false;    //Cannot access the other player's piece
+		}
+
+		if(!Board.isValidSpace(final_x, final_y)){
 			System.out.println("Move is outside the board!");
 			return false;
 		}
@@ -65,11 +67,6 @@ public abstract class Piece {
 		if(this.x == final_x && this.y == final_y){
 		    System.out.println("You've gotta move somewhere!");
 		    return false;
-        }
-
-		if(player != Board.getInstance().currentTurn) {
-            System.out.println("You can't move someone else's piece!");
-            return false;    //Cannot access the other player's piece
         }
 
 		if((Board.getInstance().board[final_x][final_y] != null)
@@ -102,6 +99,12 @@ public abstract class Piece {
 		this.y = fy;
 	}
 
+
+	//TODO: Implement this method to make sure you get your king out of jeopardy if it's in check
+	public Boolean inCheck(){
+		return true;
+	}
+
 	public int getX(){
 		return this.x;
 	}
@@ -109,6 +112,8 @@ public abstract class Piece {
 	public int getY(){
 		return this.y;
 	}
+
+	public Type getType() { return this.type; }
 	//TODO: Implement this method in all piece children class + Delete piece if present in fx,fy
 	public abstract boolean movement_type(int fx, int fy);
 }
