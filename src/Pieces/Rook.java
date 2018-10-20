@@ -24,7 +24,7 @@ public class Rook extends Piece{
 		this.displayText += "R";
 	}
 
-	public boolean isPathClear(int fx, int fy) {
+	private boolean isPathClear(int fx, int fy) {
 
         int inc = 1;
 
@@ -53,7 +53,6 @@ public class Rook extends Piece{
 
 	@Override
 	public boolean movement_type(int fx, int fy) {
-		// TODO Auto-generated method stub
 		if(!isPathClear(fx, fy))
 		    return false;
 
