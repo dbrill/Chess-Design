@@ -22,9 +22,15 @@ public class Knight extends Piece{
 
 	@Override
 	public boolean movement_type(int fx, int fy) {
-		// TODO Auto-generated method stub
-		
-		return true;
+		if(Math.abs(this.x - fx) == 2 && Math.abs(this.y - fy) == 1){
+			return true;
+		}
+		else if(Math.abs(this.x - fx) == 1 && Math.abs(this.y - fy) == 2){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 }
