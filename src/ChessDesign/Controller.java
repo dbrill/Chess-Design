@@ -8,6 +8,11 @@ import java.awt.event.ActionListener;
 public class Controller implements ActionListener{
     private CButton selected = null;
 
+
+    /**
+     * Action listener for highlighting selected piece!
+     *
+     */
     public void actionPerformed(ActionEvent ae){
         CButton clicked = (CButton) ae.getSource();
         if(this.selected == null){
