@@ -23,6 +23,7 @@ public class Bishop extends Piece{
 		this.displayText += "B";
 	}
 
+	@SuppressWarnings("Duplicates")
 	public Boolean isPathClear(int fx, int fy){
 		int incx = 1;
 		int incy = 1;
@@ -43,7 +44,6 @@ public class Bishop extends Piece{
 
 	@Override
 	public boolean movement_type(int fx, int fy) {
-		// TODO Auto-generated method stub
 		if(Math.abs(this.x - fx) != Math.abs(this.y - fy)){
 			System.out.println("Bishop must move diagonally!");
 			return false;
