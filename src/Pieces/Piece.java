@@ -54,33 +54,74 @@ public abstract class Piece {
 	//TODO:Implement this method in the Piece class
 	public boolean movement(int final_x, int final_y) {
 
-		if(player != Board.getInstance().currentTurn) {
+		if (player != Board.getInstance().currentTurn) {
 			System.out.println("You can't move someone else's piece!");
 			return false;    //Cannot access the other player's piece
 		}
 
-		if(!Board.isValidSpace(final_x, final_y)){
+		if (!Board.isValidSpace(final_x, final_y)){
 			System.out.println("Move is outside the board!");
 			return false;
 		}
 
-		if(this.x == final_x && this.y == final_y){
+		if (this.x == final_x && this.y == final_y){
 		    System.out.println("You've gotta move somewhere!");
 		    return false;
         }
 
-		if((Board.getInstance().board[final_x][final_y] != null)
+		if ((Board.getInstance().board[final_x][final_y] != null)
                 && (Board.getInstance().board[final_x][final_y].player == Board.getInstance().currentTurn)) {
 			System.out.println("You can't move over your own piece!");
 			return false;
 		}
-		
-		if(movement_type(final_x, final_y)) {
-			updateBoard(final_x, final_y);
-			return true;
+
+		if (Board.putsKingInJeopardy(this.x, this.y, final_x, final_y, player)){
+			System.out.println("You can't put your king in Jeopardy!");
+			return false;
 		}
-		
-		return false;
+
+		if (player.inCheck()){
+			Board.getInstance().board[final_x][final_y] = this;
+			Board.getInstance().board[x][y] = null;
+			int oldX = this.x;
+			int oldY = this.y;
+			this.x = final_x;
+			this.y = final_y;
+
+			if (player.color == Color.WHITE){
+				if (Board.getInstance().whiteCheck()){
+					System.out.println("You have to move your king out of check!!");
+					Board.getInstance().board[x][y] = this;
+					Board.getInstance().board[final_x][final_y] = null;
+					this.x = oldX;
+					this.y = oldY;
+					return false;
+				}
+			}
+			else if (player.color == Color.BLACK){
+				if (Board.getInstance().blackCheck()){
+					System.out.println("You have to move your king out of check!!");
+					Board.getInstance().board[x][y] = this;
+					Board.getInstance().board[final_x][final_y] = null;
+					this.x = oldX;
+					this.y = oldY;
+					return false;
+				}
+			}
+			Board.getInstance().board[x][y] = this;
+			Board.getInstance().board[final_x][final_y] = null;
+			this.x = oldX;
+			this.y = oldY;
+
+		}
+
+		if (!movement_type(final_x, final_y)) {
+			System.out.println("Invalid movement!");
+			return false;
+		}
+
+		updateBoard(final_x, final_y);
+		return true;
 	}
 	
 	/**

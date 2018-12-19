@@ -57,10 +57,13 @@ public class Board {
 			}
 			if(blackCheck()){
 				JOptionPane.showMessageDialog(null, "Black is in check!");
+				black.setCheck();
 			}
 			if(whiteCheck()){
 				JOptionPane.showMessageDialog(null, "White is in check!");
+				white.setCheck();
 			}
+
 			return true;
 		}
 		else{
@@ -161,15 +164,19 @@ public class Board {
 	 * @note this method is super ineffecient. I should find a way to break it up!
 	 */
 	@SuppressWarnings("Duplicates")
-	public static boolean spaceIsSafe(int x, int y, Player player){
+	//this is a great example of a bloated function. We'd be much better off with multiple functions that
+	//check for specific pieces. Maybe one function that checks for jeopardy from rooks and queens
+	//another function that checks for knights
+	//another function that checks for bishops...etc.
+
+	//public static boolean spaceIsSafe(int checkX, int checkY, int currentX, int currentY, Player player){
+	public static boolean spaceIsSafe(int checkX, int checkY, Player player){
 		Board board = Board.getInstance();
 
 		//check for rooks and queens
 		//check up
-		for(int i = 1; x - i >= 0; i++){
-			System.out.println(x-i);
-			System.out.println(y);
-			Piece piece = board.board[x - i][y];
+		for(int i = 1; checkX - i >= 0; i++){
+			Piece piece = board.board[checkX - i][checkY];
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
 					return false;
@@ -180,8 +187,8 @@ public class Board {
 			}
 		}
 		//check down
-		for(int i = 1; x + i <= 7; i++){
-			Piece piece = board.board[x + i][y];
+		for(int i = 1; checkX + i <= 7; i++){
+			Piece piece = board.board[checkX + i][checkY];
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
 					return false;
@@ -192,8 +199,8 @@ public class Board {
 			}
 		}
 		//check right
-		for(int i = 1; y + i <= 7; i++){
-			Piece piece = board.board[x][y + i];
+		for(int i = 1; checkY + i <= 7; i++){
+			Piece piece = board.board[checkX][checkY + i];
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
 					return false;
@@ -204,8 +211,8 @@ public class Board {
 			}
 		}
 		//check left
-		for(int i = 1; y - i >= 0; i++){
-			Piece piece = board.board[x][y - i];
+		for(int i = 1; checkY - i >= 0; i++){
+			Piece piece = board.board[checkX][checkY - i];
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
 					return false;
@@ -218,8 +225,8 @@ public class Board {
 
 		//check for bishops and queens
 		//check up-left
-		for(int i = 1; x - i >= 0 && y - i >= 0; i ++){
-			Piece piece = board.board[x-i][y-i];
+		for(int i = 1; checkX - i >= 0 && checkY - i >= 0; i ++){
+			Piece piece = board.board[checkX-i][checkY-i];
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
 					return false;
@@ -231,8 +238,8 @@ public class Board {
 		}
 
 		//check up-right
-		for(int i = 1; x - i >= 0 && y + i <= 7; i ++){
-			Piece piece = board.board[x-i][y+i];
+		for(int i = 1; checkX - i >= 0 && checkY + i <= 7; i ++){
+			Piece piece = board.board[checkX-i][checkY+i];
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
 					return false;
@@ -244,8 +251,8 @@ public class Board {
 		}
 
 		//check down-left
-		for(int i = 1; x + i <= 7 && y - i >= 0; i ++){
-			Piece piece = board.board[x+i][y-i];
+		for(int i = 1; checkX + i <= 7 && checkY - i >= 0; i ++){
+			Piece piece = board.board[checkX+i][checkY-i];
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
 					return false;
@@ -257,8 +264,8 @@ public class Board {
 		}
 
 		//check down-right
-		for(int i = 1; x + i <= 7 && y + i <= 7; i ++){
-			Piece piece = board.board[x+i][y+i];
+		for(int i = 1; checkX + i <= 7 && checkY + i <= 7; i ++){
+			Piece piece = board.board[checkX+i][checkY+i];
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
 					return false;
@@ -270,36 +277,36 @@ public class Board {
 		}
 		//check for pawns
 		if (player.color == Color.WHITE){
-			if (x > 0){
-				if(y > 0) {
-					if (board.board[x - 1][y-1] != null &&
-							board.board[x - 1][y-1].getPlayer() != player &&
-							board.board[x - 1][y-1].getType() == Type.PAWN) {
+			if (checkX > 0){
+				if(checkY > 0) {
+					if (board.board[checkX - 1][checkY-1] != null &&
+							board.board[checkX - 1][checkY-1].getPlayer() != player &&
+							board.board[checkX - 1][checkY-1].getType() == Type.PAWN) {
 						return false;
 					}
 				}
-				if(y < 7){
-					if (board.board[x - 1][y + 1] != null &&
-							board.board[x - 1][y+1].getPlayer() != player &&
-							board.board[x - 1][y+1].getType() == Type.PAWN) {
+				if(checkY < 7){
+					if (board.board[checkX - 1][checkY + 1] != null &&
+							board.board[checkX - 1][checkY+1].getPlayer() != player &&
+							board.board[checkX - 1][checkY+1].getType() == Type.PAWN) {
 						return false;
 					}
 				}
 			}
 		}
 		else{
-			if (x < 7){
-				if(y > 0) {
-					if (board.board[x + 1][y - 1] != null &&
-							board.board[x + 1][y-1].getPlayer() != player &&
-							board.board[x + 1][y-1].getType() == Type.PAWN) {
+			if (checkX < 7){
+				if(checkY > 0) {
+					if (board.board[checkX + 1][checkY - 1] != null &&
+							board.board[checkX + 1][checkY-1].getPlayer() != player &&
+							board.board[checkX + 1][checkY-1].getType() == Type.PAWN) {
 						return false;
 					}
 				}
-				if(y < 7){
-					if (board.board[x + 1][y + 1] != null &&
-							board.board[x + 1][y+1].getPlayer() != player &&
-							board.board[x + 1][y+1].getType() == Type.PAWN) {
+				if(checkY < 7){
+					if (board.board[checkX + 1][checkY + 1] != null &&
+							board.board[checkX + 1][checkY+1].getPlayer() != player &&
+							board.board[checkX + 1][checkY+1].getType() == Type.PAWN) {
 						return false;
 					}
 				}
@@ -308,8 +315,8 @@ public class Board {
 		//check for kings
 		int[][] directions = new int[][]{{-1,-1}, {-1,0}, {-1,1},  {0,1}, {1,1},  {1,0},  {1,-1},  {0, -1}};
 		for(int i = 0; i < directions.length; i++){
-			int tempX = x + directions[i][0];
-			int tempY = y + directions[i][1];
+			int tempX = checkX + directions[i][0];
+			int tempY = checkY + directions[i][1];
 			if (tempX < 0 ||
 				tempY < 0 ||
 				tempX > 7 ||
@@ -328,8 +335,8 @@ public class Board {
 		//check for knights
 		directions = new int[][]{{-2,-1}, {-2,1}, {2,-1},  {2,1}, {1,-2},  {1,2},  {-1,-2},  {-1, 2}};
 		for(int i = 0; i < directions.length; i++){
-			int tempX = x + directions[i][0];
-			int tempY = y + directions[i][1];
+			int tempX = checkX + directions[i][0];
+			int tempY = checkY + directions[i][1];
 			if (tempX < 0 ||
 					tempY < 0 ||
 					tempX > 7 ||
@@ -347,6 +354,103 @@ public class Board {
 		return true;
 	}
 
+	/**
+	 * Method to check if by moving a piece you're putting your king in jeopardy
+	 * @param initX the initial x coord of the piece being moved
+	 * @param initY the initial y coord of the piece being moved
+	 * @param newX the x coord the piece is moving to
+	 * @param newY the y coord the piece is moving to
+	 * @param player the player whose piece is moving
+	 * @return true if it puts the king in jeopardy
+	 */
+	@SuppressWarnings("Duplicates")
+	public static boolean putsKingInJeopardy(int initX, int initY, int newX, int newY, Player player){
+		//there are two ways a piece can move and put their king in jeopardy. They can uncover
+		//the path for a queen or bishop DIAGONALLY
+		//or the path for a queen or rook in a STRAIGHT line
+		Board board = Board.getInstance();
+		boolean diagonalJeopardy = false;
+		boolean straightJeopardy = false;
+		int[] kingSpace = new int[]{player.king.getX(), player.king.getY()};
+
+		int xToKing = Math.abs(initX - kingSpace[0]);
+		int yToKing = Math.abs(initY - kingSpace[1]);
+
+		if (xToKing == yToKing){
+			diagonalJeopardy = true;
+		}
+		else if (xToKing == 0 && yToKing != 0){
+			straightJeopardy = true;
+		}
+		else if (yToKing == 0 && xToKing != 0){
+			straightJeopardy = true;
+		}
+
+		//scale incrementer positively or negatively depending on where the piece is relative to
+		//the king
+		int horiz = 1;
+		int vert = 1;
+		//if the piece is "higher" than the king then we need to decrement X
+		if (initX < kingSpace[0]) vert = -1;
+		//if the piece is further left than the king then we need to decrement Y
+		if (initY < kingSpace[1]) horiz = -1;
+		//if the piece is in the same row
+		if (initX == kingSpace[0]) vert = 0;
+		//if the piece is in the same column
+		if (initY == kingSpace[1]) horiz = 0;
+
+		if (vert == 0 && horiz == 0){
+			return false;
+		}
+
+		System.out.print("diagJeop: " + diagonalJeopardy);
+		System.out.println("\tstraightJeop: " + straightJeopardy);
+		System.out.println("vert: " + vert + "\nhoriz: " + horiz);
+		//if moving diagonally
+		if (diagonalJeopardy){
+			for (int i = 1; kingSpace[0] + (i*vert) >= 0 && kingSpace[0] + (i*vert) <= 7
+							&& kingSpace[1] + (i*horiz) >= 0 && kingSpace[1] + (i*horiz) <= 7; i++){
+				Piece piece = board.board[kingSpace[0] + (i*vert)][kingSpace[1] + (i*horiz)];
+				System.out.println("\n****CHECKING****\nvert: " + (kingSpace[0] + (i*vert)) + "\nhoriz: " + (kingSpace[1] + (i*horiz)) + "\n******************");
+				if (piece != null && piece.getX() == initX && piece.getY() == initY){
+					continue;
+				}
+				else if (piece != null && piece.getX() == newX && piece.getY() == newY){
+					return false;
+				}
+				else if (piece != null && piece.getPlayer() != player){
+					if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
+						return true;
+					}
+				}
+				else if (piece != null && piece.getPlayer() == player){
+					break;
+				}
+			}
+		}
+		else if(straightJeopardy){
+			for (int i = 1; kingSpace[0] + (i*vert) >= 0 && kingSpace[0] + (i*vert) <= 7
+					&& kingSpace[1] + (i*horiz) >= 0 && kingSpace[1] + (i*horiz) <= 7; i++){
+				Piece piece = board.board[kingSpace[0] + (i*vert)][kingSpace[1] + (i*horiz)];
+				if (piece != null && piece.getX() == initX && piece.getY() == initY){
+					continue;
+				}
+				else if (piece != null && piece.getX() == newX && piece.getY() == newY){
+					return false;
+				}
+				else if (piece != null && piece.getPlayer() != player){
+					if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
+						return true;
+					}
+				}
+				else if (piece != null && piece.getPlayer() == player){
+					break;
+				}
+			}
+		}
+
+		return false;
+	}
 
 	/**
 	 * Method to check if White is in check

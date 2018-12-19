@@ -19,6 +19,7 @@ public class Player {
 	
 	//Temporary variable for x positions
 	private int initialX;
+	private boolean inCheck = false;
 	
 	/***
 	 * 
@@ -75,5 +76,10 @@ public class Player {
 		int[] kingSpace = new int[]{king.getX(), king.getY()};
 		return kingSpace;
 	}
+
+	public void setCheck(){
+		this.inCheck = true;
+	}
+	public boolean inCheck() {return this.inCheck;}
 
 }
