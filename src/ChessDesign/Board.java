@@ -181,6 +181,9 @@ public class Board {
 				if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
 					return false;
 				}
+				else{
+					break;
+				}
 			}
 			else if (piece != null && piece.getPlayer() == player){
 				break;
@@ -192,6 +195,9 @@ public class Board {
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
 					return false;
+				}
+				else{
+					break;
 				}
 			}
 			else if (piece != null && piece.getPlayer() == player){
@@ -205,6 +211,9 @@ public class Board {
 				if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
 					return false;
 				}
+				else{
+					break;
+				}
 			}
 			else if (piece != null && piece.getPlayer() == player){
 				break;
@@ -216,6 +225,9 @@ public class Board {
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.ROOK || piece.getType() == Type.QUEEN){
 					return false;
+				}
+				else{
+					break;
 				}
 			}
 			else if (piece != null && piece.getPlayer() == player){
@@ -231,6 +243,9 @@ public class Board {
 				if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
 					return false;
 				}
+				else{
+					break;
+				}
 			}
 			else if (piece != null && piece.getPlayer() == player){
 				break;
@@ -243,6 +258,9 @@ public class Board {
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
 					return false;
+				}
+				else{
+					break;
 				}
 			}
 			else if (piece != null && piece.getPlayer() == player){
@@ -257,6 +275,9 @@ public class Board {
 				if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
 					return false;
 				}
+				else{
+					break;
+				}
 			}
 			else if (piece != null && piece.getPlayer() == player){
 				break;
@@ -269,6 +290,9 @@ public class Board {
 			if(piece != null && piece.getPlayer() != player){
 				if(piece.getType() == Type.BISHOP || piece.getType() == Type.QUEEN){
 					return false;
+				}
+				else{
+					break;
 				}
 			}
 			else if (piece != null && piece.getPlayer() == player){

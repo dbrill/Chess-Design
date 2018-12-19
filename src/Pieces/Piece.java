@@ -1,4 +1,5 @@
 package Pieces;
+
 import ChessDesign.*;
 
 /**
@@ -81,37 +82,42 @@ public abstract class Piece {
 		}
 
 		if (player.inCheck()){
+			int [] k = player.getKing();
+			System.out.println("X: " + k[0] + "\tY: " + k[1]);
 			Board.getInstance().board[final_x][final_y] = this;
-			Board.getInstance().board[x][y] = null;
+			Board.getInstance().board[this.x][this.y] = null;
 			int oldX = this.x;
 			int oldY = this.y;
 			this.x = final_x;
 			this.y = final_y;
-
+			k = player.getKing();
+			System.out.println("X: " + k[0] + "\tY: " + k[1]);
 			if (player.color == Color.WHITE){
 				if (Board.getInstance().whiteCheck()){
 					System.out.println("You have to move your king out of check!!");
-					Board.getInstance().board[x][y] = this;
-					Board.getInstance().board[final_x][final_y] = null;
 					this.x = oldX;
 					this.y = oldY;
+					Board.getInstance().board[this.x][this.y] = this;
+					Board.getInstance().board[final_x][final_y] = null;
 					return false;
 				}
 			}
 			else if (player.color == Color.BLACK){
 				if (Board.getInstance().blackCheck()){
 					System.out.println("You have to move your king out of check!!");
-					Board.getInstance().board[x][y] = this;
-					Board.getInstance().board[final_x][final_y] = null;
 					this.x = oldX;
 					this.y = oldY;
+					Board.getInstance().board[this.x][this.y] = this;
+					Board.getInstance().board[final_x][final_y] = null;
+
 					return false;
 				}
 			}
-			Board.getInstance().board[x][y] = this;
-			Board.getInstance().board[final_x][final_y] = null;
+			player.unsetCheck();
 			this.x = oldX;
 			this.y = oldY;
+			Board.getInstance().board[this.x][this.y] = this;
+			Board.getInstance().board[final_x][final_y] = null;
 
 		}
 

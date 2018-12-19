@@ -28,7 +28,7 @@ public class King extends Piece{
 			System.out.println("Kings can only move one space at a time!");
 			return false;
 		}
-
+		System.out.println("King's movement");
 		//TODO check to make sure king isn't moving into check(mate)
 		if(!Board.spaceIsSafe(fx, fy, this.player)){
 			System.out.println("You can't move your king into jeopardy!");

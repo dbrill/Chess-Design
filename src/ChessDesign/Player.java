@@ -80,6 +80,7 @@ public class Player {
 	public void setCheck(){
 		this.inCheck = true;
 	}
+	public void unsetCheck() {this.inCheck = false; }
 	public boolean inCheck() {return this.inCheck;}
 
 }
